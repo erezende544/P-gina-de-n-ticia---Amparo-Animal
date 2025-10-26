@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    /* 🎨 Cores principais */
+    --background: #fff9f0;
+    /* Fundo geral da página (creme claro) */
+    --foreground: #3e2723;
+    /* Texto principal (marrom escuro) */
+
+    --card: #fef6e3;
+    /* Fundo dos cartões e painéis */
+    --card-foreground: #3e2723;
+    /* Texto dentro dos cartões */
+
+    --popover: #f8f5f0;
+    /* Fundo de pop-ups / tooltips */
+    --popover-foreground: #3e2723;
+    /* Texto de pop-ups */
+
+    --primary: #ef8867;
+    /* Coral - cor principal (botões, destaques) */
+    --primary-foreground: #ffffff;
+    /* Texto sobre o botão principal */
+
+    --secondary: #a7c210;
+    /* Verde maçã - cor secundária */
+    --secondary-foreground: #1b5e20;
+    /* Texto sobre o botão secundário */
+
+    --muted: #f0e9e0;
+    /* Cor neutra de fundo alternativo */
+    --muted-foreground: #6d4c41;
+    /* Texto neutro */
+
+    --accent: #c8e6c9;
+    /* Verde suave para realces */
+    --accent-foreground: #1b5e20;
+    /* Texto em elementos de destaque */
+
+    --destructive: #c62828;
+    /* Vermelho de perigo/exclusão */
+    --destructive-foreground: #ffffff;
+    /* Texto sobre o vermelho */
+
+    --border: #e0d6c9;
+    /* Cor das bordas */
+    --input: #e0d6c9;
+    /* Cor das bordas de inputs */
+    --ring: #2e7d32;
+    /* Verde escuro (foco/seleção) */
+
+    /* Tipografia e layout */
+    --font-sans: 'Poppins', ui-sans-serif, sans-serif, system-ui;
+    --radius: 0.5rem;
+
+    /* Sombras */
+    --shadow-sm: 0 1px 3px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow: 0 1px 3px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+}
+
+/* ---------------------------------------------- */
+/* BASE GLOBAL                                    */
+/* ---------------------------------------------- */
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--background);
+    color: var(--foreground);
+    margin: 0;
+}
+
+.navbar {
+    background-color: var(--card) !important;
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand {
+    color: var(--primary) !important;
+    font-weight: 700;
+}
+
+.max-width-1280 {
+    max-width: 1280px;
+}
+
+main {
+    margin: auto;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: var(--foreground);
+    font-weight: 600;
+}
+
+/* ---------------------------------------------- */
+/* CARTÕES                                        */
+/* ---------------------------------------------- */
+.cartao {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+/* ---------------------------------------------- */
+/* FORMULÁRIOS                                    */
+/* ---------------------------------------------- */
+.grupo-formulario {
+    margin-bottom: 1rem;
+}
+
+.grupo-formulario label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.grupo-formulario input,
+.grupo-formulario textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--input);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--foreground);
+    background-color: var(--muted);
+    resize: vertical;
+}
+
+/* ---------------------------------------------- */
+/* BOTÕES                                         */
+/* ---------------------------------------------- */
+button {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+/* Botão principal */
+button[type="submit"],
+.botao-principal {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+button[type="submit"]:hover,
+.botao-principal:hover {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+}
+
+/* Botões de ação (editar/excluir) */
+.botao-de-acao {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.botao-de-acao:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.botao-editar {
+    color: var(--primary);
+}
+
+.botao-excluir {
+    color: var(--destructive);
+}
+
+/* Sucesso / Perigo / Secundário */
+.botao-sucesso {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+}
+
+.botao-sucesso:hover {
+    background-color: #93ad0e;
+}
+
+.botao-perigo {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+}
+
+.botao-perigo:hover {
+    opacity: 0.9;
+}
+
+.botao-secundario {
+    background-color: var(--muted);
+    color: var(--foreground);
+}
+
+.botao-secundario:hover {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+}
+
+/* Agrupamento de botões */
+.botoes-edicao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.botoes-edicao button {
+    display: grid;
+    align-content: center;
+    flex: 1;
+}
+
+/* ---------------------------------------------- */
+/* LISTA DE NOTÍCIAS                              */
+/* ---------------------------------------------- */
+.grid-noticias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    justify-items: center;
+    padding: 23px;
+}
+
+.cartao-noticia {
+    max-width: 500px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.15s ease;
+}
+
+.cartao-noticia:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.cartao-noticia img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.cartao-noticia-conteudo {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cartao-noticia-conteudo h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+    text-align: left;
+    color: var(--foreground);
+}
+
+.cartao-noticia-conteudo p {
+    font-size: 0.9rem;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    color: var(--muted-foreground);
+}
+
+.cartao-noticia-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+/* ---------------------------------------------- */
+/* VIEW FORM / LISTA                              */
+/* ---------------------------------------------- */
+#view-formulario {
+    display: block;
+}
+
+#cartao-formulario {
+    background-color: var(--card);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.cabecalho-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#botao-nova-noticia {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#botao-nova-noticia:hover {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+}
+
+/* ---------------------------------------------- */
+/* LAYOUT DE EDIÇÃO                               */
+/* ---------------------------------------------- */
+.layout-edicao-noticia {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    align-items: start;
+}
+
+.coluna-esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.coluna-direita {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Prévia da imagem */
+.preview-imagem {
+    width: 100%;
+    height: 300px;
+    background-color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.preview-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------------------------------------------- */
+/* PAINÉIS DE INFORMAÇÕES                         */
+/* ---------------------------------------------- */
+.painel-informacoes,
+.painel-opcoes {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.painel-informacoes h3,
+.painel-opcoes h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--foreground);
+    border-bottom: 1px solid var(--border);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+}
+
+.painel-informacoes p {
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+}
+
+/* ---------------------------------------------- */
+/* RESPONSIVIDADE                                 */
+/* ---------------------------------------------- */
+@media (max-width: 850px) {
+    .layout-edicao-noticia {
+        grid-template-columns: 1fr;
+    }
+}

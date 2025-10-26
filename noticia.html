@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciador de Notícias | Amparo Animal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="estilo-noticias.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="max-width-1280 mx-auto d-flex align-items-center flex-grow-1 px-3 px-md-5 flex-wrap">
+            <a class="navbar-brand me-auto" href="#">Amparo Animal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Notícias</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Doação de itens de Pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Postagens de adotantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Administração de ONGs</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i> ong.xyz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container py-4">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold">Gerenciador de Notícias</h1>
+            <p class="text-muted">Crie, edite e gerencie as notícias do Amparo Animal.</p>
+        </div>
+
+        <!-- 🔹 View: Lista -->
+        <div id="view-lista">
+            <div class="card p-4 shadow-sm border-0">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+                    <h2 class="h5 mb-3 mb-md-0">Notícias Publicadas</h2>
+                    <button id="botao-nova-noticia" class="btn btn-primary">
+                        + Nova Notícia
+                    </button>
+                </div>
+                <div id="lista-de-noticias" class="grid-noticias"></div>
+            </div>
+        </div>
+
+        <!-- 🔹 View: Formulário -->
+        <div id="view-formulario" style="display: none">
+            <div class="card p-4 shadow-sm border-0">
+                <h2 id="titulo-formulario" class="h5 mb-4">Adicionar Nova Notícia</h2>
+
+                <form id="formulario-de-noticia">
+                    <input type="hidden" id="noticia-id" />
+
+                    <div class="layout-edicao-noticia">
+                        <!-- Coluna esquerda -->
+                        <div class="coluna-esquerda">
+                            <div class="grupo-formulario">
+                                <label for="imagemUrl">URL da Imagem:</label>
+                                <input type="text" id="imagemUrl" placeholder="https://" />
+                            </div>
+
+                            <div class="preview-imagem">
+                                <img id="imagem-preview" src="https://via.placeholder.com/300x200?text=Sem+Imagem"
+                                    alt="Prévia da Imagem" />
+                            </div>
+
+                            <div class="grupo-formulario">
+                                <label for="titulo">Título:</label>
+                                <input type="text" id="titulo" placeholder="Título da notícia" required />
+                            </div>
+
+                            <div class="grupo-formulario">
+                                <label for="descricaoCurta">Descrição Curta:</label>
+                                <input type="text" id="descricaoCurta" placeholder="Um breve resumo da notícia"
+                                    required />
+                            </div>
+
+                            <div class="grupo-formulario">
+                                <label for="noticiaCompleta">Notícia Completa:</label>
+                                <textarea id="noticiaCompleta" rows="10"
+                                    placeholder="Escreva o conteúdo completo da notícia aqui..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Coluna direita -->
+                        <div class="coluna-direita">
+                            <div class="painel-informacoes">
+                                <h3>Informações:</h3>
+                                <p><strong>Status:</strong> <span id="info-status">--</span></p>
+                                <p><strong>Visualizações:</strong> <span id="info-visualizacoes">--</span></p>
+                                <p><strong>Data de Criação:</strong> <span id="info-data-criacao">--</span></p>
+                            </div>
+
+                            <div class="painel-opcoes">
+                                <h3>Opções:</h3>
+                                <div class="botoes-edicao">
+                                    <button type="submit" id="botao-salvar" class="botao-principal">
+                                        Salvar
+                                    </button>
+                                    <button type="button" id="botao-excluir-form" class="botao-perigo">
+                                        Excluir
+                                    </button>
+                                    <button type="button" id="botao-novo-form" class="botao-sucesso">
+                                        Novo
+                                    </button>
+                                </div>
+                                <button type="button" id="botao-cancelar" class="botao-secundario mt-2">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="noticias.js"></script>
+</body>
+
+</html>
